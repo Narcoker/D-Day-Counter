@@ -61,10 +61,14 @@ const starter = function () {
 }
 
 const setClearInterval = function () {
-    container.style.display = 'none';
-    messageContainer.style.display = 'flex';
-    messageContainer.innerHTML = '<h3>D-Day를 입력해주세요.</h3>';
     for (let i = 0; i < intervalIdArr.length; i++) {
         clearInterval(intervalIdArr[i]);
     }
+}
+
+const resetTimer = function () {
+    container.style.display = 'none';
+    messageContainer.style.display = 'flex';
+    messageContainer.innerHTML = '<h3>D-Day를 입력해주세요.</h3>';
+    setClearInterval();
 }
