@@ -19,10 +19,8 @@ const counterMaker = function () {
     const targetDate = dateFormMaker();
     const remaining = (targetDate - nowDate) / 1000;
     if (remaining <= 0) {
-        // 만약 reamaining 이 0 이하이면 타이머가 종료되었습니다. 출력
-        console.log("타이머가 종료되었습니다.");
+        messageContainer.innerHTML = "<h3>타이머가 종료되었습니다.</h3>";
     } else if (isNaN(remaining)) {
-        // 만약 잘못되 날짜가 들어옸다면 유효한 시간대가 아닙니다. 출력
         console.log("유효한 시간대가 아닙니다.")
     }
     const remainingDate = Math.floor(remaining / 3600 / 24);
