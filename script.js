@@ -14,10 +14,9 @@ const dateFormMaker = function () {
     return new Date(dateFormat);
 }
 
-const counterMaker = function () {
-    console.log('반복 실행중')
+const counterMaker = function (data) {
     const nowDate = new Date();
-    const targetDate = dateFormMaker();
+    const targetDate = new Date(data).setHours(0, 0, 0, 0);
     const remaining = (targetDate - nowDate) / 1000;
 
     if (remaining <= 0) {
@@ -53,10 +52,12 @@ const counterMaker = function () {
 }
 
 const starter = function () {
+    setClearInterval();
+    const targetDateInput = dateFormMaker();
     container.style.display = 'flex';
     messageContainer.style.display = "none";
-    counterMaker();
-    const intervalId = setInterval(counterMaker, 1000);
+    counterMaker(targetDate);
+    const intervalId = setInterval(() => { counterMaker(targetDateInput) }, 1000);
     intervalIdArr.push(intervalId);
 }
 
