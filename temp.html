@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- lang: 이 페이지가 작성된 언어, "이 페이지를 한글로 번역하기겠습니까" 가 나오는 이유 -->
+<html lang="ko">
+<!-- head 태그는 이 페이지를 구성하는 데이터들을 가지고 있다. -->
+
+<head>
+    <!--title 페이지의 이름 -->
+    <title>D-Day</title>
+    <script>
+        const output = function () {
+            console.log("함수를 실행했어요");
+        }
+
+        const dateFormMaker = function () {
+            // document.querySelector() 메서드는 태그 객체를 가지고 온다.
+            // 파라미터: 태그, id, class 
+            // id일 경우 #을 붙이고 class일 경우 . 을 붙인다.
+            const inputYear = document.querySelector("#target-year-input").value;
+            const inputMonth = document.querySelector("#target-month-input").value;
+            const inputDate = document.querySelector("#target-date-input").value;
+
+            const dateFormat = inputYear + "-" + inputMonth + "-" + inputDate;
+            return new Date(dateFormat);
+        }
+
+        const counterMaker = function () {
+            const nowDate = new Date();
+            const targetDate = dateFormMaker();
+            const remaining = (targetDate - nowDate) / 1000;
+
+            const remainingDate = Math.floor(remaining / 3600 / 24);
+            const remainingHours = Math.floor(remaining / 3600 % 24);
+            const remainingMin = Math.floor(remaining / 60) % 60;
+            const remainingSec = Math.floor(remaining) % 60;
+            console.log(remainingDate, remainingHours, remainingMin, remainingSec); // Date는 연산이 가능, 결과값은 밀리세컨드
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- div 는 라인 전체를 차지하여 줄바꿈이 일어난다. -->
+    <!-- id는 고유한 값을 가진다. -->
+    <!-- class는 중복된 값을 가질수 있다. 공백을 기준으로 여러개의 값을 가질 수 있다. -->
+    <div id="div-id" class="div-class class2">안녕하세요</div>
+    <div class="div-class class2">반갑습니다.</div>
+    <!-- span는 컨텐츠 영역만을 차지하여 옆에 붙는다. -->
+    <!-- style 적용시 속성마다 세미콜론 반드시 지정 -->
+    <span style="color: red;">잘부탁드립니다.</span>
+    <span>인사해요.</span>
+    <input />
+    <!-- onclick 속성은 클릭 시 ""로 감싼 script 를 실행한다. -->
+    <button onclick="output()">버튼</button>
+</body>
+
+</html>

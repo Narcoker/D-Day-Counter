@@ -21,7 +21,7 @@ const counterMaker = function () {
     if (remaining <= 0) {
         messageContainer.innerHTML = "<h3>타이머가 종료되었습니다.</h3>";
     } else if (isNaN(remaining)) {
-        console.log("유효한 시간대가 아닙니다.")
+        messageContainer.innerHTML = "<h3>유효한 시간대가 아닙니다.</h3>";
     }
     const remainingDate = Math.floor(remaining / 3600 / 24);
     const remainingHours = Math.floor(remaining / 3600 % 24);
