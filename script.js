@@ -1,3 +1,10 @@
+const messageContainer = document.querySelector('#d-day-message');
+const container = document.querySelector("#d-day-container");
+
+container.style.display = 'none';
+messageContainer.innerHTML = '<h3>D-Day를 입력해주세요.</h3>';
+
+
 const dateFormMaker = function () {
     const inputYear = document.querySelector("#target-year-input").value;
     const inputMonth = document.querySelector("#target-month-input").value;
