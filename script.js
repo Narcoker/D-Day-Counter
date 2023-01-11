@@ -1,5 +1,6 @@
 const messageContainer = document.querySelector('#d-day-message');
 const container = document.querySelector("#d-day-container");
+const intervalIdArr = [];
 
 container.style.display = 'none';
 messageContainer.innerHTML = '<h3>D-Day를 입력해주세요.</h3>';
@@ -14,19 +15,24 @@ const dateFormMaker = function () {
 }
 
 const counterMaker = function () {
+    console.log('반복 실행중')
     const nowDate = new Date();
     const targetDate = dateFormMaker();
     const remaining = (targetDate - nowDate) / 1000;
 
     if (remaining <= 0) {
+        container.style.display = 'none';
         messageContainer.innerHTML = "<h3>타이머가 종료되었습니다.</h3>";
+        messageContainer.style.display = 'flex';
+        setClearInterval();
         return;
     }
 
     if (isNaN(remaining)) {
+        container.style.display = 'none';
         messageContainer.innerHTML = "<h3>유효한 시간대가 아닙니다.</h3>";
         messageContainer.style.display = 'flex';
-        container.style.display = 'none';
+        setClearInterval();
         return;
     }
 
@@ -50,4 +56,15 @@ const starter = function () {
     container.style.display = 'flex';
     messageContainer.style.display = "none";
     counterMaker();
+    const intervalId = setInterval(counterMaker, 1000);
+    intervalIdArr.push(intervalId);
+}
+
+const setClearInterval = function () {
+    container.style.display = 'none';
+    messageContainer.style.display = 'flex';
+    messageContainer.innerHTML = '<h3>D-Day를 입력해주세요.</h3>';
+    for (let i = 0; i < intervalIdArr.length; i++) {
+        clearInterval(intervalIdArr[i]);
+    }
 }
